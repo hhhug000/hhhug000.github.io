@@ -1,14 +1,57 @@
+---
+import '../styles/global.css';
+
+// Safely pick up wallpaper from src/assets if it exists — no build error if missing
+const wallpaperGlob = import.meta.glob<{ default: ImageMetadata }>(
+	'../assets/wallpaper.jpg',
+	{ eager: true }
+);
+const wallpaperSrc = (Object.values(wallpaperGlob)[0] as any)?.default?.src as string | undefined;
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Hugo | Software Engineer & Developer", 
+	description = "Hugo is a software engineer specializing in clean, modern, minimalist web development and systems design." 
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
+		
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
-		<title>Hugo's Website</title>
+		
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+		<!-- Blocking Theme Script to Prevent FOUC -->
+		<script is:inline>
+			document.documentElement.setAttribute('data-theme', 'dark');
+		</script>
 	</head>
 	<body>
+		<!-- Wallpaper background: place wallpaper.png in src/assets/ to activate -->
+		{wallpaperSrc && (
+			<div
+				class="wallpaper-bg"
+				aria-hidden="true"
+				style={`background-image: url('${wallpaperSrc}')`}
+			></div>
+		)}
 		<slot />
 	</body>
 </html>
@@ -17,7 +60,8 @@
 	html,
 	body {
 		margin: 0;
+		padding: 0;
 		width: 100%;
-		height: 100%;
+		min-height: 100%;
 	}
 </style>

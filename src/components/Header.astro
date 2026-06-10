@@ -1,0 +1,210 @@
+---
+---
+
+<div class="header-wrapper">
+  <header class="header liquid-glass">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <span class="logo-dot"></span>Hugo
+      </a>
+      
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-actions">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+          <!-- Moon Icon (shown in light mode) -->
+          <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <!-- Sun Icon (shown in dark mode) -->
+          <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+</div>
+
+<style>
+  .header-wrapper {
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+    padding: 20px 1.5rem 10px 1.5rem;
+    width: 100%;
+  }
+
+  .header {
+    max-width: 680px;
+    margin: 0 auto;
+    border-radius: 100px !important;
+    padding: 0 24px;
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .header:hover {
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
+    transform: translateY(1px);
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 54px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+
+  .logo-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--text-primary);
+    border-radius: 50%;
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    padding: 6px 0;
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background-color: var(--text-primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .social-icon, .theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    padding: 6px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .theme-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .social-icon:hover, .theme-toggle-btn:hover {
+    color: var(--text-primary);
+    background-color: var(--border-color);
+    border-color: var(--border-color);
+  }
+
+  .sun-icon {
+    display: none;
+  }
+
+  .moon-icon {
+    display: block;
+  }
+
+  /* Default theme based on system preference */
+  @media (prefers-color-scheme: dark) {
+    .sun-icon {
+      display: block;
+    }
+    .moon-icon {
+      display: none;
+    }
+  }
+
+  /* Overrides for explicit data-theme values */
+  html[data-theme="light"] .sun-icon {
+    display: none;
+  }
+  html[data-theme="light"] .moon-icon {
+    display: block;
+  }
+
+  html[data-theme="dark"] .sun-icon {
+    display: block;
+  }
+  html[data-theme="dark"] .moon-icon {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    .nav {
+      display: none;
+    }
+    .header-container {
+      justify-content: space-between;
+    }
+  }
+</style>
+
+<script>
+  // Add theme toggle click listener
+  const toggleBtn = document.getElementById('theme-toggle');
+  
+  toggleBtn?.addEventListener('click', () => {
+    const element = document.documentElement;
+    const currentTheme = element.getAttribute('data-theme') || 
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    element.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+</script>
