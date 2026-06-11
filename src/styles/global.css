@@ -424,7 +424,7 @@ html[data-theme="dark"] .terminal-tab-btn:hover {
 }
 
 .about-section {
-  padding: 0px 0px 80px 0px;
+  padding: 0px 0px 80px 0px !important;
 }
 
 /* 2. ProjectsSection Component Styles */
