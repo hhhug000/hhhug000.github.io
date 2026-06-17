@@ -132,7 +132,7 @@ body {
 }
 
 /* Make all direct page content sit above the wallpaper */
-body > *:not(.wallpaper-bg) {
+body > *:not(.wallpaper-bg):not(.modal-backdrop) {
   position: relative;
   z-index: 1;
 }

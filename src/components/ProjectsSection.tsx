@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import projects from '../data/projects.tsx';
 
 type Category = 'All' | 'Frontend' | 'Backend' | 'Libraries' | 'Hardware' | 'AI/ML' | 'Other';
@@ -60,7 +61,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
     };
   }, [onClose]);
 
-  return (
+  return createPortal(
     <div className="modal-backdrop" onClick={onClose}>
       <div className="modal-container liquid-glass" onClick={e => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose} aria-label="Close">
@@ -103,7 +104,8 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
