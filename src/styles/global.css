@@ -558,7 +558,213 @@ html[data-theme="dark"] .tag {
 }
 
 
-/* 3. ContactForm Component Styles */
+/* 3. Project Modal Styles */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: modal-fade-in 0.2s ease;
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 32px;
+  border-radius: 16px;
+  animation: modal-slide-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modal-slide-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+  background-color: var(--border-color);
+}
+
+.modal-project-info {
+  padding-right: 40px;
+}
+
+.modal-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.modal-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.modal-readme-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 24px 0;
+}
+
+.modal-readme {
+  min-height: 60px;
+}
+
+.modal-readme-status {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* README HTML content from GitHub API */
+.readme-content {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.readme-content h1,
+.readme-content h2,
+.readme-content h3,
+.readme-content h4,
+.readme-content h5,
+.readme-content h6 {
+  color: var(--text-primary);
+  margin: 1.4em 0 0.5em;
+  line-height: 1.3;
+}
+
+.readme-content h1 { font-size: 1.5rem; }
+.readme-content h2 { font-size: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3em; }
+.readme-content h3 { font-size: 1rem; }
+
+.readme-content p {
+  margin: 0.75em 0;
+  color: var(--text-secondary);
+}
+
+.readme-content a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  opacity: 0.8;
+}
+
+.readme-content a:hover { opacity: 1; }
+
+.readme-content code {
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  background: var(--border-color);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--text-primary);
+}
+
+.readme-content pre {
+  background: var(--border-color);
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.readme-content pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.85em;
+}
+
+.readme-content ul,
+.readme-content ol {
+  padding-left: 1.5em;
+  margin: 0.75em 0;
+}
+
+.readme-content li {
+  margin: 0.3em 0;
+}
+
+.readme-content blockquote {
+  border-left: 3px solid var(--border-color);
+  margin: 1em 0;
+  padding: 0.5em 0 0.5em 1em;
+  color: var(--text-muted);
+}
+
+.readme-content img {
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+.readme-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: 0.85em;
+}
+
+.readme-content th,
+.readme-content td {
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.readme-content th {
+  color: var(--text-primary);
+  background: var(--border-color);
+  font-weight: 600;
+}
+
+.readme-content hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 1.5em 0;
+}
+
+/* 4. ContactForm Component Styles */
 .contact-section {
   padding: 80px 0;
   display: flex;
