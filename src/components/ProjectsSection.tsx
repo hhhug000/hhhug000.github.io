@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import projects from '../data/projects.tsx';
 
-type Category = 'All' | 'Frontend' | 'Backend' | 'Systems' | 'Hardware' | 'AI/ML' | 'Other';
+type Category = 'All' | 'Frontend' | 'Backend' | 'Libraries' | 'Hardware' | 'AI/ML' | 'Other';
 
 interface Project {
   title: string;
@@ -14,17 +15,6 @@ interface Project {
 export default function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState<Category>('All');
 
-  const projects: Project[] = [
-    {
-      title: "Project Title",
-      description: "Description",
-      categories: ["Hardware"],
-      tags: ["The", "Tags", "Go", "Here"],
-      githubUrl: "https://github.com",
-      demoUrl: "https://github.com"
-    }
-  ];
-
   const filteredProjects = activeCategory === 'All'
     ? projects
     : projects.filter(p => p.categories.includes(activeCategory));
@@ -37,7 +27,7 @@ export default function ProjectsSection() {
         
         {/* Minimal Pill Filter Tabs */}
         <div className="filter-bar">
-          {(['All', 'Frontend', 'Backend', 'Systems', 'Hardware', 'AI/ML', 'Other'] as Category[]).map((category) => (
+          {(['All', 'Frontend', 'Backend', 'Libraries', 'Hardware', 'AI/ML', 'Other'] as Category[]).map((category) => (
             <button
               key={category}
               className={`filter-btn ${activeCategory === category ? 'active' : ''}`}
